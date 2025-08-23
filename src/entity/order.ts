@@ -1,4 +1,4 @@
-import type OrderItem from "./order-item";
+import OrderItem from "./order-item";
 
 export default class Order {
   private readonly _id: string;
