@@ -30,7 +30,7 @@ export default class Customer {
     this.validateName(this._name);
   }
 
-  private validateName(name: string): void {
+  validateName(name: string): void {
     if (name.length === 0) {
       throw new Error("Name is required");
     }

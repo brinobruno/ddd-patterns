@@ -38,4 +38,9 @@ describe("Address unit tests", () => {
     const address = new Address("Main St", 456, "Springfield", "98765-432");
     expect(address.toString()).toBe("Main St, 456, Springfield, 98765-432");
   });
+
+  it("should not throw when all fields are valid", () => {
+    const address = new Address("Street", 123, "City", "12345-678");
+    expect(() => address.validate()).not.toThrow();
+  });
 });

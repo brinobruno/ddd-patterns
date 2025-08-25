@@ -42,4 +42,14 @@ describe("Order item unit tests", () => {
       return item;
     }).toThrow("items quantity must be greater than 0");
   });
+
+  it("should return price", () => {
+    const item = new OrderItem("1", "item 1", 100, "p1", 1);
+    expect(item.price).toBe(100);
+  });
+
+  it("should return quantity", () => {
+    const item = new OrderItem("1", "item 1", 100, "p1", 4);
+    expect(item.quantity).toBe(4);
+  });
 });

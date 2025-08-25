@@ -63,4 +63,18 @@ describe("Customer unit tests", () => {
     customer.deactivate();
     expect(customer.isActive()).toBe(false);
   });
+
+  it("should rollback name change if validation fails", () => {
+    const customer = new Customer("1", "John");
+
+    try {
+      customer.changeName("");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (e: unknown) {
+      // swallowed on purpose
+    }
+
+    // ensure name was rolled back to "John"
+    expect(customer.name).toBe("John");
+  });
 });

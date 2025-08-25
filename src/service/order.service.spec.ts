@@ -4,6 +4,14 @@ import OrderItem from "../entity/order-item";
 import OrderService from "./order.service";
 
 describe("Order service unit tests", () => {
+  it("should throw error when items are equal or less to 0", () => {
+    expect(() => {
+      const customer = new Customer("c1", "Customer 1");
+      const order = OrderService.placeOrder(customer, []);
+      return order;
+    }).toThrow("Order must have at least one item");
+  });
+
   it("should place an order", () => {
     const customer = new Customer("c1", "Customer 1");
     const item1 = new OrderItem("1", "Item 1", 10, "p1", 1);
