@@ -35,7 +35,7 @@ export default class Customer {
     }
   }
 
-  name(): string {
+  get name(): string {
     return this._name;
   }
 

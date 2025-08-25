@@ -23,12 +23,15 @@ export default class Order {
       throw new Error("customerId is required");
     }
     if (this._items.length === 0) {
+      throw new Error("items are required");
+    }
+    if (this._items.some((item) => item.quantity <= 0)) {
       throw new Error("items quantity must be greater than 0");
     }
     return true;
   }
 
   total(): number {
-    return this._items.reduce((acc, item) => acc + item.price(), 0);
+    return this._items.reduce((acc, item) => acc + item.orderItemTotal(), 0);
   }
 }

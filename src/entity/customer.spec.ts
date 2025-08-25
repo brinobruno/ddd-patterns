@@ -20,7 +20,7 @@ describe("Customer unit tests", () => {
     const customer = new Customer("1", "John");
     customer.changeName("Jane");
 
-    expect(customer.name()).toBe("Jane");
+    expect(customer.name).toBe("Jane");
   });
 
   it("should not change to invalid name", () => {
@@ -30,7 +30,7 @@ describe("Customer unit tests", () => {
       customer.changeName("");
     }).toThrow("Name is required");
 
-    expect(customer.name()).toBe("John");
+    expect(customer.name).toBe("John");
   });
 
   it("should activate customer", () => {
