@@ -22,6 +22,18 @@ export default class OrderItem {
   }
 
   validate(): boolean {
+    if (this._id.length === 0) {
+      throw new Error("Id is required");
+    }
+    if (this._name.length === 0) {
+      throw new Error("Name is required");
+    }
+    if (this._price <= 0) {
+      throw new Error("Price must be greater than 0");
+    }
+    if (this._productId.length === 0) {
+      throw new Error("ProductId is required");
+    }
     if (this._quantity <= 0) {
       throw new Error("items quantity must be greater than 0");
     }
