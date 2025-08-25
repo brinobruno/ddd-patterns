@@ -17,6 +17,8 @@
     "typescript-eslint": "^8.40.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "yarn tsc:check && jest",
+    "tsc:build": "tsc",
+    "tsc:check": "tsc --noEmit"
   }
 }
