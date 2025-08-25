@@ -20,5 +20,8 @@
     "test": "yarn tsc:check && jest",
     "tsc:build": "tsc",
     "tsc:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "uuid": "^11.1.0"
   }
 }
