@@ -28,7 +28,7 @@ describe("Customer repository test", () => {
 
     const customer = new Customer("1", "Customer 1");
     const address = new Address("Street 1", 123, "12345-678", "City 1");
-    customer.setAddress(address);
+    customer.changeAddress(address);
 
     await customerRepository.create(customer);
 
@@ -53,7 +53,7 @@ describe("Customer repository test", () => {
 
     const customer = new Customer("1", "Customer 1");
     const address = new Address("Street 1", 123, "12345-678", "City 1");
-    customer.setAddress(address);
+    customer.changeAddress(address);
     await customerRepository.create(customer);
 
     customer.changeName("Customer 2");
@@ -92,7 +92,7 @@ describe("Customer repository test", () => {
 
     const customer = new Customer("1", "Customer 1");
     const address = new Address("Street 1", 123, "12345-678", "City 1");
-    customer.setAddress(address);
+    customer.changeAddress(address);
     await customerRepository.create(customer);
 
     const foundCustomer = await customerRepository.find(customer.id);

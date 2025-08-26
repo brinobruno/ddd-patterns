@@ -83,10 +83,6 @@ export default class Customer {
     return this._active;
   }
 
-  setAddress(address: Address): void {
-    this._address = address;
-  }
-
   addRewardPoints(points: number): void {
     this._rewardPoints += points;
   }

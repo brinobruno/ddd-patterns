@@ -62,7 +62,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
           customerModel.city,
           customerModel.zipCode
         );
-        customer.setAddress(address);
+        customer.changeAddress(address);
       }
 
       return customer;
@@ -101,7 +101,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
         customerModel.city,
         customerModel.zipCode
       );
-      customer.setAddress(address);
+      customer.changeAddress(address);
     }
   }
 }
