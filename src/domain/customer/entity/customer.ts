@@ -1,4 +1,5 @@
 import Address from "../value-object/address";
+import type CustomerInterface from "./customer.interface";
 
 // entity
 // - customer.ts (business rules)
@@ -10,7 +11,7 @@ import Address from "../value-object/address";
 // Order Aggregate = Order + Item + Customer ID (!!!)
 // weak/strong coupling/link
 
-export default class Customer {
+export default class Customer implements CustomerInterface {
   private readonly _id: string;
   private _name: string;
   private _address!: Address;
