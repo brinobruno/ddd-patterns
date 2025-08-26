@@ -88,4 +88,25 @@ describe("Customer unit tests", () => {
     // ensure name was rolled back to "John"
     expect(customer.name).toBe("John");
   });
+
+  it("should get address", () => {
+    const customer = new Customer("1", "John");
+    const address = new Address("Street 1", 123, "City 1", "12233-000");
+    customer.setAddress(address);
+
+    expect(customer.address).toBe(address);
+  });
+
+  it("should change address", () => {
+    const customer = new Customer("1", "John");
+    const address = new Address("Street 1", 123, "City 1", "12233-000");
+    customer.setAddress(address);
+
+    expect(customer.address).toBe(address);
+
+    const newAddress = new Address("Street 2", 456, "City 2", "98765-432");
+    customer.changeAddress(newAddress);
+
+    expect(customer.address).toBe(newAddress);
+  });
 });

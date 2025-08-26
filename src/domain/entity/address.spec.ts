@@ -43,4 +43,24 @@ describe("Address unit tests", () => {
     const address = new Address("Street", 123, "City", "12345-678");
     expect(() => address.validate()).not.toThrow();
   });
+
+  it("should get street", () => {
+    const address = new Address("Street", 123, "City", "12345-678");
+    expect(address.street).toBe("Street");
+  });
+
+  it("should get number", () => {
+    const address = new Address("Street", 123, "City", "12345-678");
+    expect(address.number).toBe(123);
+  });
+
+  it("should get city", () => {
+    const address = new Address("Street", 123, "City", "12345-678");
+    expect(address.city).toBe("City");
+  });
+
+  it("should get zip code", () => {
+    const address = new Address("Street", 123, "City", "12345-678");
+    expect(address.zipCode).toBe("12345-678");
+  });
 });
