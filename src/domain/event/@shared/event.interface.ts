@@ -1,4 +1,5 @@
 export default interface EventInterface {
   dateTimeOccured: Date;
-  eventData: unknown;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  eventData: any;
 }
