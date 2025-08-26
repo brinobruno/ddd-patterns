@@ -1,4 +1,4 @@
-import Address from "./address";
+import Address from "../value-object/address";
 
 // entity
 // - customer.ts (business rules)
