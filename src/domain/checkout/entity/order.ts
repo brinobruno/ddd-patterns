@@ -1,6 +1,7 @@
 import OrderItem from "./order-item";
+import type OrderInterface from "./order.interface";
 
-export default class Order {
+export default class Order implements OrderInterface<OrderItem> {
   private readonly _id: string;
   private _customerId: string;
   private _items: OrderItem[];
