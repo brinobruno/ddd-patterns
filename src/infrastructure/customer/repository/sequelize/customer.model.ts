@@ -1,4 +1,10 @@
-import { Model, Table, PrimaryKey, Column } from "sequelize-typescript";
+import {
+  Model,
+  Table,
+  PrimaryKey,
+  Column,
+  DataType,
+} from "sequelize-typescript";
 
 @Table({
   tableName: "customers",
@@ -6,27 +12,27 @@ import { Model, Table, PrimaryKey, Column } from "sequelize-typescript";
 })
 export default class CustomerModel extends Model {
   @PrimaryKey
-  @Column
+  @Column({ type: DataType.UUIDV4 })
   declare id: string;
 
-  @Column({ allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   declare name: string;
 
-  @Column({ allowNull: true })
+  @Column({ type: DataType.STRING, allowNull: true })
   declare street: string;
 
-  @Column({ allowNull: true })
+  @Column({ type: DataType.NUMBER, allowNull: true })
   declare number: number;
 
-  @Column({ allowNull: true })
+  @Column({ type: DataType.STRING, allowNull: true })
   declare zipCode: string;
 
-  @Column({ allowNull: true })
+  @Column({ type: DataType.STRING, allowNull: true })
   declare city: string;
 
-  @Column({ allowNull: false })
+  @Column({ type: DataType.BOOLEAN, allowNull: false })
   declare active: boolean;
 
-  @Column({ allowNull: false })
+  @Column({ type: DataType.NUMBER, allowNull: false })
   declare rewardPoints: number;
 }
