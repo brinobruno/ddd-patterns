@@ -12,7 +12,7 @@ import {
 })
 export default class CustomerModel extends Model {
   @PrimaryKey
-  @Column({ type: DataType.UUIDV4 })
+  @Column({ type: DataType.STRING, allowNull: false })
   declare id: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
