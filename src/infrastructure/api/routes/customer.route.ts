@@ -24,7 +24,7 @@ customerRoute.post("/", async (request: Request, response: Response) => {
     };
 
     const output = await useCase.execute(customerDto);
-    response.send(output).status(201);
+    response.status(201).send(output);
   } catch (err) {
     console.error(err);
     response.status(500).send(err);
