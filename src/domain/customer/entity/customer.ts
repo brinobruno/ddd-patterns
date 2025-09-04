@@ -1,3 +1,5 @@
+import Entity from "../../@shared/entity/entity.abstract";
+import NotificationError from "../../@shared/notification/notification.error";
 import Address from "../value-object/address";
 import type CustomerInterface from "./customer.interface";
 
@@ -11,34 +13,44 @@ import type CustomerInterface from "./customer.interface";
 // Order Aggregate = Order + Item + Customer ID (!!!)
 // weak/strong coupling/link
 
-export default class Customer implements CustomerInterface {
-  private readonly _id: string;
+export default class Customer extends Entity implements CustomerInterface {
   private _name: string;
   private _address!: Address;
   private _active: boolean = false;
   private _rewardPoints: number = 0;
 
   constructor(id: string, name: string) {
+    super();
     this._id = id;
     this._name = name;
     this.validate();
+
+    this.throwIfInvalid();
+  }
+
+  private throwIfInvalid(): void {
+    if (this.notification.hasErrors()) {
+      throw new NotificationError(this.notification.getErrors());
+    }
   }
 
   validate(): void {
-    if (this._id.length === 0) {
-      throw new Error("Id is required");
-    }
-    this.validateName(this._name);
-  }
+    this.notification.clear("customer");
 
-  validateName(name: string): void {
-    if (name.length === 0) {
-      throw new Error("Name is required");
+    if (this.id.length === 0) {
+      this.notification.addError({
+        context: "customer",
+        message: "Id is required",
+      });
     }
-  }
+    if (this._name.length === 0) {
+      this.notification.addError({
+        context: "customer",
+        message: "Name is required",
+      });
+    }
 
-  get id(): string {
-    return this._id;
+    this.throwIfInvalid();
   }
 
   get name(): string {
@@ -59,9 +71,9 @@ export default class Customer implements CustomerInterface {
 
     try {
       this.validate();
-    } catch (e) {
+    } catch (err) {
       this._name = previousName;
-      throw e;
+      throw err;
     }
   }
 
@@ -70,10 +82,23 @@ export default class Customer implements CustomerInterface {
   }
 
   activate(): void {
-    if (this._address === undefined) {
-      throw new Error("Address is required to activate the customer");
+    const previousActive = this._active;
+
+    if (!this._address) {
+      this.notification.addError({
+        context: "customer",
+        message: "Address is required to activate the customer",
+      });
     }
+
     this._active = true;
+
+    try {
+      this.throwIfInvalid();
+    } catch (err) {
+      this._active = previousActive;
+      throw err;
+    }
   }
 
   deactivate(): void {

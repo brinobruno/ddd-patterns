@@ -6,14 +6,14 @@ describe("Customer unit tests", () => {
     expect(() => {
       const customer = new Customer("", "John");
       return customer;
-    }).toThrow("Id is required");
+    }).toThrow("customer: Id is required");
   });
 
   it("should throw error when name is empty", () => {
     expect(() => {
       const customer = new Customer("1", "");
       return customer;
-    }).toThrow("Name is required");
+    }).toThrow("customer: Name is required");
   });
 
   it("should change name", () => {
@@ -78,14 +78,10 @@ describe("Customer unit tests", () => {
   it("should rollback name change if validation fails", () => {
     const customer = new Customer("1", "John");
 
-    try {
+    expect(() => {
       customer.changeName("");
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (e: unknown) {
-      // swallowed on purpose
-    }
+    }).toThrow("customer: Name is required");
 
-    // ensure name was rolled back to "John"
     expect(customer.name).toBe("John");
   });
 
