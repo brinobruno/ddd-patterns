@@ -64,7 +64,7 @@ describe("Create product use case integration tests", () => {
     };
 
     await expect(useCase.execute(input)).rejects.toThrow(
-      "Price must be greater than zero"
+      "product: Price must be greater than zero"
     );
   });
 });
