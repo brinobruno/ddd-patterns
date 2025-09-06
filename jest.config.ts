@@ -10,6 +10,8 @@ const config: Config = {
     "^.+.(t|j)sx?$": "@swc/jest",
   },
 
+  transformIgnorePatterns: ["node_modules/(?!jstoxml)"],
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
